@@ -57,6 +57,10 @@ export default function LoginPage() {
             mode: "cors"
         }).then(response => {
             if (response.ok) {
+                response.json().then(data => {
+                    localStorage.setItem("id", data.id);
+                })
+
                 return response.json();
             } else {
                 throw new Error("login failed");
