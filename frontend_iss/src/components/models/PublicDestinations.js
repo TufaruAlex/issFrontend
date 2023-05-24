@@ -1,6 +1,6 @@
 
 
-export interface PublicBucketList {
+export interface PublicDestinations {
     id:number;
     title:number;
     geolocation:string;

@@ -49,7 +49,7 @@ export default function LoginPage() {
         e.preventDefault()
         const user = {username: name, password: password}
         console.log(user)
-        fetch("http://localhost:3000" + "/auth/signin", {
+        fetch("http://localhost:8080/api" + "/auth/signin", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(user),

@@ -1,11 +1,11 @@
-import type {PublicBucketList} from "./PublicBucketList";
+import type {PublicDestinations} from "./PublicDestinations";
 import type {User} from "./User";
 
 
 
 export interface PrivateBucketList{
     id: number;
-    public_item: PublicBucketList;
+    public_item: PublicDestinations;
     user_item: User;
 
 }
