@@ -34,7 +34,6 @@ export default function GetAllDestinations() {
     const user = localStorage.getItem("id");
 
 
-    console.log(role);
 
     useEffect(() => {
         setLoading(true);
@@ -46,11 +45,11 @@ export default function GetAllDestinations() {
                 setDestinations(data);
                 setLoading(false);
             });
-    }, []);
+    }, [i]);
 
     const reloadData = () => {
         setLoading(true);
-        fetch('http://localhost:8080/destinations/details/' + String(i),{
+        fetch('http://localhost:8080/api/destinations/' + String(i),{
             headers:{'Authorization': 'Bearer ' + token}
         })
             .then((response) => response.json())
@@ -61,12 +60,13 @@ export default function GetAllDestinations() {
     }
 
     const incPage = (e) => {
-        i = i + 1;
+        if(destinations.length>0)
+            i = i + 1;
         reloadData()
     }
 
     const decPage = (e) => {
-        if (i >= 1)
+        if (i > 0)
             i = i - 1;
         reloadData()
     }
