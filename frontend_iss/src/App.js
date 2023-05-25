@@ -11,7 +11,7 @@ import DestinationAdd from "./components/destinations/DestinationsAdd";
 import DestinationDelete from "./components/destinations/DestinationsDelete";
 import DestinationEdit from "./components/destinations/DestinationEdit";
 import DestinationDetails from "./components/destinations/DestinationsDetails";
-
+import Logout from "./components/security/Logout"
 function App() {
   return (
     <div className="App">
@@ -29,7 +29,7 @@ function App() {
             <Route path="/destinations/:destinationId/details"
                    element={<PrivateRoute><DestinationDetails/></PrivateRoute>}/>
             <Route path={"/:userid/bucket-list/add"} element={<PrivateRoute><DestinationAdd/></PrivateRoute>}/>
-
+            <Route path={"/logout"} element={<PrivateRoute><Logout/> </PrivateRoute>}></Route>
         </Routes>
 
 

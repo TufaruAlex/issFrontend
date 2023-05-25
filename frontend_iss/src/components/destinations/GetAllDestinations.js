@@ -25,12 +25,14 @@ import Cookies from "js-cookie";
 
 let i = 0;
 
+
 const token = Cookies.get("zurli")
 export default function GetAllDestinations() {
     const [loading, setLoading] = useState(false);
     const [destinations, setDestinations] = useState([]);
     const role = localStorage.getItem("role");
     const user = localStorage.getItem("id");
+
 
     console.log(role);
 
@@ -44,7 +46,7 @@ export default function GetAllDestinations() {
                 setDestinations(data);
                 setLoading(false);
             });
-    }, [i]);
+    }, []);
 
     const reloadData = () => {
         setLoading(true);
@@ -57,15 +59,6 @@ export default function GetAllDestinations() {
                 setLoading(false);
             });
     }
-
-    const handleSort = (e) => {
-        const sortedData = [...destinations].sort((a, b) => {
-            return a.name > b.name ? 1 : -1
-        })
-        setDestinations(sortedData)
-    }
-
-
 
     const incPage = (e) => {
         i = i + 1;
@@ -107,8 +100,6 @@ export default function GetAllDestinations() {
             <h1>All Destinations</h1>
 
             {loading && <CircularProgress/>}
-            {!loading && destinations.length === 0 && <p>No destinations found</p>}
-            {!loading && (
                 <div>
                     {role === "ROLE_ADMIN" && (
                     <IconButton component={Link} sx={{mr: 3}} to={`/destinations/add`}>
@@ -118,7 +109,6 @@ export default function GetAllDestinations() {
                     </IconButton>
                         )}
                 </div>
-            )}
             {!loading && destinations.length > 0 && (
                 <TableContainer component={Paper}>
                     <Table sx={{minWidth: 650}} aria-label="simple table">

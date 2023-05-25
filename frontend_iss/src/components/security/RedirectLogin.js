@@ -4,7 +4,12 @@ import {Navigate, useLocation, useNavigate} from "react-router-dom";
 
 function checkIfCuiGood() {
     console.log(Cookies.get('zurli'))
-    return Cookies.get('zurli') !== undefined;
+    if(Cookies.get('zurli') !== undefined){
+           return true;
+    }
+    else {
+           return false;
+    }
 }
 
 const PrivateRoute = (props: { children: React.ReactNode }): JSX.Element => {
