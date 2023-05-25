@@ -21,7 +21,7 @@ export default function Navbar() {
                     >
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <Link className="btn btn-outline-light" class="bucket-list" to={"/" + String(userId) + "/bucket-list"}>
+                    <Link className="btn btn-outline-light" to={"/" + String(userId) + "/bucket-list"}>
                         View bucket list
                     </Link>
                     <button
@@ -35,8 +35,8 @@ export default function Navbar() {
                     >
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <Link className="btn btn-outline-light" to="/employee-comparison">
-                        button two
+                    <Link className="btn btn-outline-light" to="/destinations">
+                        View public destinations
                     </Link>
 
                     <button
