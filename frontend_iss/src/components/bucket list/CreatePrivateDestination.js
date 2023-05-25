@@ -87,10 +87,16 @@ export default function CreatePrivateDestination() {
                 <TextField id="outlined-basic" label="Geolocation" variant="outlined" required
                            onChange={(e) => setGeolocation(e.target.value)}
                 /><br/>
-                <TextField id="outlined-basic" label="Image" variant="outlined" required
-                           value={image}
-                           onChange={(e) => setImage(e.target.value)}
-                /><br/>
+                {/*<TextField id="outlined-basic" label="Image" variant="outlined" required*/}
+                {/*           value={image}*/}
+                {/*           onChange={(e) => setImage(e.target.value)}*/}
+                {/*/><br/>*/}
+                <FormControl>
+                    <FormLabel>Add Image</FormLabel>
+                    <TextField type="file" id="outlined-basic" variant="outlined" required
+                               onChange={(e)=>setImage(e.target.files[0])}
+                    />
+                </FormControl><br/>
                 <TextField id="outlined-basic" label="Description" variant="outlined" required
                            value={description}
                            onChange={(e) => setDescription(e.target.value)}
