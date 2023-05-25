@@ -11,6 +11,9 @@ import DestinationAdd from "./components/destinations/DestinationsAdd";
 import DestinationDelete from "./components/destinations/DestinationsDelete";
 import DestinationEdit from "./components/destinations/DestinationEdit";
 import DestinationDetails from "./components/destinations/DestinationsDetails";
+import CreatePrivateDestination from "./components/bucket list/CreatePrivateDestination";
+import GetBucketList from "./components/bucket list/GetBucketList";
+import DeleteBucketList from "./components/bucket list/DeleteBucketList";
 
 function App() {
   return (
@@ -28,7 +31,9 @@ function App() {
                    element={<PrivateRoute><DestinationDelete/></PrivateRoute>}/>
             <Route path="/destinations/:destinationId/details"
                    element={<PrivateRoute><DestinationDetails/></PrivateRoute>}/>
-            <Route path={"/:userid/bucket-list/add"} element={<PrivateRoute><DestinationAdd/></PrivateRoute>}/>
+            <Route path={"/:userId/bucket-list"} element={<PrivateRoute><GetBucketList/></PrivateRoute>}/>
+            <Route path={"/:userId/bucket-list/add-private"} element={<PrivateRoute><CreatePrivateDestination/></PrivateRoute>}/>
+            <Route path={"/:userId/bucket-list/delete/:destinationId"} element={<PrivateRoute><DeleteBucketList/></PrivateRoute>}/>
 
         </Routes>
 
