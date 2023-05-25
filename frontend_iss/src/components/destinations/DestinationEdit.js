@@ -55,7 +55,7 @@ export default function ProducerEdit() {
                     noValidate
                     autoComplete="off"
                 >
-                    <h2>Update Cube</h2>
+                    <h2>Update Destination</h2>
                     <TextField id="outlined-basic" label="Id" variant="outlined"
                                value={id}
                                disabled
@@ -77,7 +77,7 @@ export default function ProducerEdit() {
                     /><br/>
                     <FormControl>
                         <FormLabel>arrival date</FormLabel>
-                    <TextField id="outlined-basic" label="arrival dates" variant="outlined" type="date" required
+                    <TextField id="outlined-basic"  variant="outlined" type="date" required
                                value={arrival_date}
                                onChange={(e) => setArrival_date(e.target.value)}
                     />
@@ -86,7 +86,7 @@ export default function ProducerEdit() {
 
                     <FormControl>
                         <FormLabel>departure date</FormLabel>
-                    <TextField id="outlined-basic" label="departure dates" variant="outlined" type="date" required
+                    <TextField id="outlined-basic"  variant="outlined" type="date" required
                                value={departure_date}
                                onChange={(e) => setDeparture_date(e.target.value)}
                     />

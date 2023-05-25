@@ -74,6 +74,7 @@ export default function CreatePrivateDestination() {
 
     return (<Container>
         <Paper elevation={3} style={paperStyle}>
+            <h2>Add private destination</h2>
             <Box component="form"
                  sx={{
                      '& > :not(style)': {m: 2, width: '550px'},
@@ -103,7 +104,7 @@ export default function CreatePrivateDestination() {
                 /><br/>
                 <FormControl>
                     <FormLabel>arrival date</FormLabel>
-                    <TextField id="outlined-basic" label="arrival dates" variant="outlined" type="date" required
+                    <TextField id="outlined-basic"  variant="outlined" type="date" required
                                value={arrival_date}
                                onChange={(e) => setArrival_date(e.target.value)}
                     />
@@ -112,7 +113,7 @@ export default function CreatePrivateDestination() {
 
                 <FormControl>
                     <FormLabel>departure date</FormLabel>
-                    <TextField id="outlined-basic" label="departure dates" variant="outlined" type="date" required
+                    <TextField id="outlined-basic"  variant="outlined" type="date" required
                                value={departure_date}
                                onChange={(e) => setDeparture_date(e.target.value)}
                     />

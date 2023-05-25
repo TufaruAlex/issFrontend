@@ -23,11 +23,11 @@ export default function DestinationDelete() {
 
     const handleDelete = (e) => {
         e.preventDefault()
-        fetch("http://localhost:8080/api/destinations/" + parseInt(id), {
+        fetch("http://localhost:8080/api/destinations/delete/" + parseInt(id), {
             method: "DELETE",
             headers:{'Authorization': 'Bearer ' + token}
         })
-            .then(() => this.setState({status: "Delete successful"}));
+            .then(() => console.log("yupii"));
         navigate("/destinations")
     }
 
