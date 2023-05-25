@@ -10,6 +10,7 @@ import PrivateRoute from "./components/security/RedirectLogin";
 import DestinationAdd from "./components/destinations/DestinationsAdd";
 import DestinationDelete from "./components/destinations/DestinationsDelete";
 import DestinationEdit from "./components/destinations/DestinationEdit";
+import DestinationDetails from "./components/destinations/DestinationsDetails";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
             <Route path="/destinations/:destinationId/edit" element={<PrivateRoute><DestinationEdit/></PrivateRoute>}/>
             <Route path="/destinations/:destinationId/delete"
                    element={<PrivateRoute><DestinationDelete/></PrivateRoute>}/>
+            <Route path="/destinations/:destinationId/details"
+                   element={<PrivateRoute><DestinationDetails/></PrivateRoute>}/>
+            <Route path={"/:userid/bucket-list/add"} element={<PrivateRoute><DestinationAdd/></PrivateRoute>}/>
+
         </Routes>
 
 

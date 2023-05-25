@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Textarea from '@mui/joy/Textarea';
@@ -21,9 +21,11 @@ export default function DestinationAdd() {
     const [geolocation, setGeolocation] = useState('')
     const [image, setImage] = useState('')
     const [description, setDescription] = useState('')
-    const [stay_dates, setStay_dates] = useState('')
+    const [arrival_date, setArrival_date] = useState('')
+    const [departure_date, setDeparture_date] = useState('')
     const [open, setOpen] = React.useState(false);
     const [msg, setMsg] = useState('error')
+    const role = localStorage.getItem("role");
     const handleClick = () => {
         setOpen(true);
     };
@@ -41,11 +43,11 @@ export default function DestinationAdd() {
             handleClick()
         } else {
             e.preventDefault()
-            const destination = {title: title, image: image, description: description, stay_dates: stay_dates, geolocation: geolocation}
+            const destination = {title: title, image: image, description: description, arrival_date: arrival_date, departure_date: departure_date, geolocation: geolocation, isPrivate: false }
             console.log(destination)
             fetch("http://localhost:8080/api/destinations", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: {'Authorization': 'Bearer ' + token,"Content-Type": "application/json"},
                 body: JSON.stringify(destination)
             }).then(() => {
                 console.log("New destination added")
@@ -53,6 +55,13 @@ export default function DestinationAdd() {
             navigate("/destinations")
         }
     }
+
+    useEffect(() => {
+        if (role !== "ROLE_ADMIN") {
+            window.location.href = "http://localhost:3000/destinations";
+        }
+    }, [role]);
+
     return (
         <Container>
             <Snackbar
@@ -88,10 +97,23 @@ export default function DestinationAdd() {
                                value={description}
                                onChange={(e) => setDescription(e.target.value)}
                     /><br/>
-                    <TextField id="outlined-basic" label="Stay dates" variant="outlined" required
-                               value={stay_dates}
-                               onChange={(e) => setStay_dates(e.target.value)}
-                    /><br/>
+                    <FormControl>
+                        <FormLabel>arrival date</FormLabel>
+                        <TextField id="outlined-basic" label="arrival dates" variant="outlined" type="date" required
+                                   value={arrival_date}
+                                   onChange={(e) => setArrival_date(e.target.value)}
+                        />
+                    </FormControl>
+                    <br/>
+
+                    <FormControl>
+                        <FormLabel>departure date</FormLabel>
+                        <TextField id="outlined-basic" label="departure dates" variant="outlined" type="date" required
+                                   value={departure_date}
+                                   onChange={(e) => setDeparture_date(e.target.value)}
+                        />
+                    </FormControl>
+                    <br/>
                 </Box>
                 <Button variant="contained" color="secondary" onClick={handleAdd}>
                     Add

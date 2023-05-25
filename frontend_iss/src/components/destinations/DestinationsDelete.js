@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {Button, Container, Paper} from "@mui/material";
@@ -13,15 +13,23 @@ export default function DestinationDelete() {
     const {destinationId} = useParams()
     const paperStyle = {padding: '50px 20px', width: 600, margin: '20px auto'}
     const [id, setId] = useState(destinationId)
+    const role = localStorage.getItem("role");
 
     const handleDelete = (e) => {
         e.preventDefault()
-        fetch("http://localhost:8080/api/destinations" + parseInt(id), {
-            method: "DELETE"
+        fetch("http://localhost:8080/api/destinations/" + parseInt(id), {
+            method: "DELETE",
+            headers:{'Authorization': 'Bearer ' + token}
         })
             .then(() => this.setState({status: "Delete successful"}));
         navigate("/destinations")
     }
+
+    useEffect(() => {
+        if (role !== "ROLE_ADMIN") {
+            window.location.href = "http://localhost:3000/destinations";
+        }
+    }, [role]);
 
     return (
         <Container>

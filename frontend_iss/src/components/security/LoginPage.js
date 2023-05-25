@@ -59,9 +59,12 @@ export default function LoginPage() {
             if (response.ok) {
                 response.json().then(data => {
                     localStorage.setItem("id", data.id);
+                    localStorage.setItem("role", data.roles[0]);
+                    console.log(localStorage.getItem("role"));
+
                 })
 
-                return response.json();
+
             } else {
                 throw new Error("login failed");
             }

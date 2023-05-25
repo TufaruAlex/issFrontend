@@ -4,25 +4,35 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {Container, Paper} from "@mui/material";
 import {useParams} from "react-router-dom";
-import {apiaddress} from "../Home";
+
 import Cookies from "js-cookie";
 
-const token = Cookies.get("timo")
-export default function ProducerDetails() {
+const token = Cookies.get("zurli")
+export default function DestinationDetails() {
     const paperStyle = {padding: '50px 20px', width: 600, margin: '20px auto'}
-    const {producerId} = useParams()
-    const [id, setId] = useState(producerId)
-    const [producer, setProducer] = useState('')
-    const [products, setProducts] = useState([])
+    const {destinationId: destinationId} = useParams()
+    const [id, setId] = useState(destinationId)
+    const [destination, setdestination] = useState('')
+    const role = localStorage.getItem("role");
+
+
 
     useEffect(() => {
-        fetch(String(apiaddress) + "/producers/" + String(producerId))
+        fetch('http://localhost:8080/api/destinations/' + String(destinationId),{
+            headers:{'Authorization': 'Bearer ' + token}
+        })
             .then(res => res.json())
             .then((result) => {
-                setProducer(result);
-                setProducts(result.cubesProducers)
+                setdestination(result);
+
             });
     }, []);
+
+    useEffect(() => {
+        if (role !== "ROLE_ADMIN") {
+            window.location.href = "http://localhost:3000/destinations";
+        }
+    }, [role]);
 
     return (
         <Container>
@@ -35,28 +45,23 @@ export default function ProducerDetails() {
                     noValidate
                     autoComplete="off"
                 >
-                    <h2>Producer Details</h2>
-                    <TextField id="outlined-basic" label="Id" variant="outlined" required
-                               value={id}
-                               disabled
-                    /><br/>
+                    <h2>destination Details</h2>
+                    <TextField
+                        id="outlined-basic"
+                        label="Id"
+                        variant="outlined"
+                        required
+                        value={id}
+                        disabled
+                    /><br />
                 </Box>
-                <Paper elevation={6}
-                       style={{margin: "10px", padding: "15px", textAlign: "left"}} key={parseInt(producer.id)}>
-                    Name:{producer.name}<br/>
-                    GDP:{parseInt(producer.gdp)}<br/>
-                    Address:{producer.address}<br/>
-                    Phone Number:{producer.phoneNumber}<br/>
-                    Email:{producer.email}<br/>
-                    Produced Cubes:
-                    {products.map(CP => (
-                        <Paper elevation={6}
-                               style={{margin: "10px", padding: "15px", textAlign: "left"}} key={parseInt(producer.id)}>
-                            Name: {CP.cube.name}<br/>
-                            Type: {CP.cube.type}<br/>
-
-                        </Paper>
-                    ))}
+                <Paper
+                    elevation={6}
+                    style={{ margin: "10px", padding: "15px", textAlign: "left" }}
+                    key={parseInt(destination.id)}
+                >
+                    {/* Displaying only the image */}
+                    <img src={destination.image} alt="Destination Image" />
                 </Paper>
             </Paper>
         </Container>
