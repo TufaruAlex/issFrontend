@@ -15,6 +15,7 @@ import CreatePrivateDestination from "./components/bucket list/CreatePrivateDest
 import GetBucketList from "./components/bucket list/GetBucketList";
 import DeleteBucketList from "./components/bucket list/DeleteBucketList";
 
+import Logout from "./components/security/Logout"
 function App() {
   return (
     <div className="App">
@@ -35,6 +36,8 @@ function App() {
             <Route path={"/:userId/bucket-list/add-private"} element={<PrivateRoute><CreatePrivateDestination/></PrivateRoute>}/>
             <Route path={"/:userId/bucket-list/delete/:destinationId"} element={<PrivateRoute><DeleteBucketList/></PrivateRoute>}/>
 
+            <Route path={"/:userid/bucket-list/add"} element={<PrivateRoute><DestinationAdd/></PrivateRoute>}/>
+            <Route path={"/logout"} element={<PrivateRoute><Logout/> </PrivateRoute>}></Route>
         </Routes>
 
 
