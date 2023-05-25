@@ -36,7 +36,7 @@ export default function GetAllDestinations() {
 
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:8080/api/destinations/details/' + String(i),{
+        fetch('http://localhost:8080/api/destinations/' + String(i),{
             headers:{'Authorization': 'Bearer ' + token}
         })
             .then((response) => response.json())
@@ -86,11 +86,11 @@ export default function GetAllDestinations() {
                 'Authorization': 'Bearer ' + token,
 
             },
-            body: JSON.stringify({ destinationId: destinationId }),
+            body: destinationId,
         };
 
 
-        fetch('http://localhost:8080/api/' + String(user)+'/bucketlist/add', requestOptions,{
+        fetch('http://localhost:8080/api/' + String(user)+'/bucket-list/add', requestOptions,{
             headers:{'Authorization': 'Bearer ' + token}
         })
             .then(response => response.json())

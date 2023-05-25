@@ -15,6 +15,12 @@ export default function DestinationDelete() {
     const [id, setId] = useState(destinationId)
     const role = localStorage.getItem("role");
 
+    useEffect(() => {
+        if (role !== "ROLE_ADMIN") {
+            window.location.href = "http://localhost:3000/destinations";
+        }
+    }, [role]);
+
     const handleDelete = (e) => {
         e.preventDefault()
         fetch("http://localhost:8080/api/destinations/" + parseInt(id), {
@@ -25,11 +31,6 @@ export default function DestinationDelete() {
         navigate("/destinations")
     }
 
-    useEffect(() => {
-        if (role !== "ROLE_ADMIN") {
-            window.location.href = "http://localhost:3000/destinations";
-        }
-    }, [role]);
 
     return (
         <Container>

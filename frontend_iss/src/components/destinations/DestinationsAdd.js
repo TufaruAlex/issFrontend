@@ -26,6 +26,12 @@ export default function DestinationAdd() {
     const [open, setOpen] = React.useState(false);
     const [msg, setMsg] = useState('error')
     const role = localStorage.getItem("role");
+
+    useEffect(() => {
+        if (role !== "ROLE_ADMIN") {
+            window.location.href = "http://localhost:3000/destinations";
+        }
+    }, [role]);
     const handleClick = () => {
         setOpen(true);
     };
@@ -45,7 +51,7 @@ export default function DestinationAdd() {
             e.preventDefault()
             const destination = {title: title, image: image, description: description, arrival_date: arrival_date, departure_date: departure_date, geolocation: geolocation, isPrivate: false }
             console.log(destination)
-            fetch("http://localhost:8080/api/destinations", {
+            fetch("http://localhost:8080/api/destinations/add", {
                 method: "POST",
                 headers: {'Authorization': 'Bearer ' + token,"Content-Type": "application/json"},
                 body: JSON.stringify(destination)
@@ -56,11 +62,7 @@ export default function DestinationAdd() {
         }
     }
 
-    useEffect(() => {
-        if (role !== "ROLE_ADMIN") {
-            window.location.href = "http://localhost:3000/destinations";
-        }
-    }, [role]);
+
 
     return (
         <Container>

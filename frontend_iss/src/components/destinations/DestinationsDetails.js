@@ -16,9 +16,14 @@ export default function DestinationDetails() {
     const role = localStorage.getItem("role");
 
 
+    useEffect(() => {
+        if (role !== "ROLE_ADMIN") {
+            window.location.href = "http://localhost:3000/destinations";
+        }
+    }, [role]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/destinations/' + String(destinationId),{
+        fetch('http://localhost:8080/api/destinations/details/' + String(destinationId),{
             headers:{'Authorization': 'Bearer ' + token}
         })
             .then(res => res.json())
@@ -28,11 +33,7 @@ export default function DestinationDetails() {
             });
     }, []);
 
-    useEffect(() => {
-        if (role !== "ROLE_ADMIN") {
-            window.location.href = "http://localhost:3000/destinations";
-        }
-    }, [role]);
+
 
     return (
         <Container>

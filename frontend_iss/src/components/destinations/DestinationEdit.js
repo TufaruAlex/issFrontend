@@ -23,11 +23,16 @@ export default function ProducerEdit() {
     const [departure_date, setDeparture_date] = useState('')
     const role = localStorage.getItem("role");
 
+    useEffect(() => {
+        if (role !== "ROLE_ADMIN") {
+            window.location.href = "http://localhost:3000/destinations";
+        }
+    }, [role]);
     const handleUpdate = (e) => {
         e.preventDefault()
         const producer = {title: title, image: image, description: description, arrival_date: arrival_date, departure_date: departure_date, geolocation: geolocation, isPrivate: false };
         console.log(producer)
-        fetch("http://localhost:8080/api/destinations/"+ String(id), {
+        fetch("http://localhost:8080/api/destinations/edit/"+ String(id), {
             method: "PUT",
             headers: {'Authorization': 'Bearer ' + token,"Content-Type": "application/json"},
             body: JSON.stringify(producer)
@@ -37,11 +42,7 @@ export default function ProducerEdit() {
         navigate("/destinations")
     }
 
-    useEffect(() => {
-        if (role !== "ROLE_ADMIN") {
-            window.location.href = "http://localhost:3000/destinations";
-        }
-    }, [role]);
+
 
     return (
         <Container>
