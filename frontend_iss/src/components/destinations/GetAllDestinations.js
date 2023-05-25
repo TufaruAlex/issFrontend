@@ -120,7 +120,6 @@ export default function GetAllDestinations() {
                                 <TableCell align="center">Arrival date</TableCell>
                                 <TableCell align="center">Departure date</TableCell>
                                 <TableCell align="center">Description</TableCell>
-                                <TableCell align="center">image</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -129,8 +128,11 @@ export default function GetAllDestinations() {
                                     <TableCell component="th" scope="row">
                                         {i * 100 + index + 1}
                                     </TableCell>
-                                    <TableCell align="center" component="th" scope="row">
-                                        {dest.title}
+                                    <TableCell align="center" component="th" scope="row" >
+                                        <Link
+                                            to={`/destinations/${dest.id}/details`}
+                                            title="View destination details"
+                                        >{dest.title}</Link>
                                     </TableCell>
                                     <TableCell align="center" component="th" scope="row">
                                         {dest.geolocation}
@@ -144,27 +146,6 @@ export default function GetAllDestinations() {
                                     <TableCell align="center" component="th" scope="row">
                                         {dest.departure_date}
                                     </TableCell>
-                                    <TableCell align="center" component="th" scope="row">
-                                        {dest.image}
-                                    </TableCell>
-                                    {/*<TableCell align="center" component="th" scope="row">*/}
-                                    {/*    <FormControl sx={{m: 1, minWidth: 120, maxWidth: 300}}>*/}
-                                    {/*        <Select*/}
-                                    {/*            multiple*/}
-                                    {/*            native*/}
-                                    {/*            label="Native"*/}
-                                    {/*            inputProps={{*/}
-                                    {/*                id: 'select-multiple-native',*/}
-                                    {/*            }}*/}
-                                    {/*        >*/}
-                                    {/*            {dest.listOfDestinations.map((title) => (*/}
-                                    {/*                <option key={title} value={title}>*/}
-                                    {/*                    {title}*/}
-                                    {/*                </option>*/}
-                                    {/*            ))}*/}
-                                    {/*        </Select>*/}
-                                    {/*    </FormControl>*/}
-                                    {/*</TableCell>*/}
                                     <TableCell align="right">
                                         <IconButton
                                             component={Link}

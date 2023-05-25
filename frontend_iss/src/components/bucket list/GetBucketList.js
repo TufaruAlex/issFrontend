@@ -83,7 +83,7 @@ export default function GetBucketList() {
                                 <TableCell align="center">Arrival date</TableCell>
                                 <TableCell align="center">Departure date</TableCell>
                                 <TableCell align="center">Description</TableCell>
-                                <TableCell align="center">image</TableCell>
+
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -111,9 +111,6 @@ export default function GetBucketList() {
                                     </TableCell>
                                     <TableCell align="center" component="th" scope="row">
                                         {item.destination.departure_date}
-                                    </TableCell>
-                                    <TableCell align="center" component="th" scope="row">
-                                        {item.destination.image}
                                     </TableCell>
                                     <TableCell align="right">
                                         <IconButton component={Link} sx={{mr: 3}}
