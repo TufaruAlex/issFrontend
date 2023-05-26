@@ -17,6 +17,11 @@ export default function Navbar() {
           </Link>
 
           {Cookies.get("zurli")!==undefined &&(
+          <Link className="btn btn-outline-light" to={"/modifyAccount"}>
+            Change Account Settings
+          </Link>)}
+
+          {Cookies.get("zurli")!==undefined &&(
               <Link className="btn btn-outline-light" to="/logout">
                 Logout
               </Link>            )}
