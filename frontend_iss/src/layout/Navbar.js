@@ -26,6 +26,11 @@ export default function Navbar() {
                 Logout
               </Link>            )}
 
+          {Cookies.get("zurli")!==undefined &&(
+              <Link className="btn btn-outline-light" to="/deleteUser">
+                Cancel Account
+              </Link>            )}
+
           {Cookies.get("zurli")===null || Cookies.get("zurli")===undefined &&(
               <Link className="btn btn-outline-light" to={"/register"}>
                 Register

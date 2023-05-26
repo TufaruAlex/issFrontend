@@ -14,8 +14,8 @@ import DestinationDetails from "./components/destinations/DestinationsDetails";
 import CreatePrivateDestination from "./components/bucket list/CreatePrivateDestination";
 import GetBucketList from "./components/bucket list/GetBucketList";
 import DeleteBucketList from "./components/bucket list/DeleteBucketList";
-
-import Logout from "./components/security/Logout"
+import CancelAccount from "./components/security/CancelAccount";
+import Logout from "./components/security/Logout";
 import ModifyAccount from "./components/bucket list/ModifyAccount";
 import Register from "./components/security/Register";
 function App() {
@@ -41,6 +41,7 @@ function App() {
             <Route path={"/:userid/bucket-list/add"} element={<PrivateRoute><DestinationAdd/></PrivateRoute>}/>
             <Route path={"/logout"} element={<PrivateRoute><Logout/> </PrivateRoute>}></Route>
             <Route path={"/modifyAccount"} element={<PrivateRoute><ModifyAccount></ModifyAccount></PrivateRoute>}/>
+            <Route path={"/deleteUser"} element={<PrivateRoute><CancelAccount/></PrivateRoute>}/>
             <Route path={"/register"} element={<Register/>}></Route>
         </Routes>
 

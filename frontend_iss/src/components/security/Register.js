@@ -39,9 +39,11 @@ export default function Register() {
         if (reason === 'clickaway') {
             return;
         }
-
+            // it workss now
         setOpen(false);
     };
+
+
 
     const handleAdd = (e) => {
         if (name === "") {
