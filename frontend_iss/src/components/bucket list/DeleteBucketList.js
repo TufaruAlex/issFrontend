@@ -20,8 +20,8 @@ export default function DeleteBucketList() {
             method: "DELETE",
             headers:{'Authorization': 'Bearer ' + token}
         })
-            .then(() => console.log("lmao"));
-        navigate(`/${userId}/bucket-list`)
+            .then(() => navigate(`/${userId}/bucket-list`));
+        // navigate(`/${userId}/bucket-list`)
     }
 
     return (

@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import * as React from "react";
 import Cookies from "js-cookie";
 import {Button, Container, Paper} from "@mui/material";
@@ -22,6 +22,8 @@ export default function CreatePrivateDestination() {
     const [open, setOpen] = React.useState(false);
     const [msg, setMsg] = useState('error')
     const userId = localStorage.getItem("id");
+    const [dest,setDest] = useState(undefined)
+    const formData = new FormData();
 
     const handleClick = () => {
         setOpen(true);
@@ -35,6 +37,25 @@ export default function CreatePrivateDestination() {
         setOpen(false);
     };
 
+    useEffect(()=>{
+        handleImage()
+    },[dest])
+
+    const handleImage=()=>{
+        console.log(dest);
+        if(dest!==undefined) {
+            formData.append('file', image)
+            console.log(image)
+            fetch("http://localhost:8080/api/destinations/add/" + String(dest.id), {
+                method: "PUT",
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                body: formData
+            }).then(() => navigate(`/${userId}/bucket-list`))
+        }
+    }
+
     const handleAdd = (e) => {
         if (title === '') {
             setMsg('name empty!!!');
@@ -43,7 +64,6 @@ export default function CreatePrivateDestination() {
             e.preventDefault()
             const destination = {
                 title: title,
-                image: image,
                 description: description,
                 arrival_date: arrival_date,
                 departure_date: departure_date,
@@ -58,6 +78,7 @@ export default function CreatePrivateDestination() {
             })
                 .then(response => response.json())
                 .then(data => {
+                    setDest(data);
                     fetch(`http://localhost:8080/api/${userId}/bucket-list/add`, {
                         method: "POST",
                         headers: {'Authorization': 'Bearer ' + token, "Content-Type": "application/json"},
@@ -68,7 +89,7 @@ export default function CreatePrivateDestination() {
                         })
                 })
 
-            navigate(`/${userId}/bucket-list`)
+            // navigate(`/${userId}/bucket-list`)
         }
     }
 
