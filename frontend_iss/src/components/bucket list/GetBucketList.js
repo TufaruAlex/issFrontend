@@ -80,9 +80,9 @@ export default function GetBucketList() {
                                 <TableCell>#</TableCell>
                                 <TableCell align="center">Title</TableCell>
                                 <TableCell align="center">Geolocation</TableCell>
+                                <TableCell align="center">Description</TableCell>
                                 <TableCell align="center">Arrival date</TableCell>
                                 <TableCell align="center">Departure date</TableCell>
-                                <TableCell align="center">Description</TableCell>
 
                             </TableRow>
                         </TableHead>

@@ -3,7 +3,6 @@ import Cookies from 'js-cookie';
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
 
 function checkIfCuiGood() {
-    console.log(Cookies.get('zurli'))
     if(Cookies.get('zurli') !== undefined){
            return true;
     }

@@ -77,7 +77,7 @@ export default function DestinationDetails() {
                     {/* Displaying the image */}
                     {imageByteArray && (
                         <img
-                            src={`data:image/png;base64,${byteArrayToBase64(imageByteArray)}`}
+                            src={`data:image/jpeg;base64,${byteArrayToBase64(imageByteArray)}`}
                             alt="Destination Image"
                         />
                     )}
