@@ -17,6 +17,7 @@ import DeleteBucketList from "./components/bucket list/DeleteBucketList";
 
 import Logout from "./components/security/Logout"
 import ModifyAccount from "./components/bucket list/ModifyAccount";
+import Register from "./components/security/Register";
 function App() {
   return (
     <div className="App">
@@ -40,6 +41,7 @@ function App() {
             <Route path={"/:userid/bucket-list/add"} element={<PrivateRoute><DestinationAdd/></PrivateRoute>}/>
             <Route path={"/logout"} element={<PrivateRoute><Logout/> </PrivateRoute>}></Route>
             <Route path={"/modifyAccount"} element={<PrivateRoute><ModifyAccount></ModifyAccount></PrivateRoute>}/>
+            <Route path={"/register"} element={<Register/>}></Route>
         </Routes>
 
 

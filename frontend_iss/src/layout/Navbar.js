@@ -25,6 +25,11 @@ export default function Navbar() {
               <Link className="btn btn-outline-light" to="/logout">
                 Logout
               </Link>            )}
+
+          {Cookies.get("zurli")===null || Cookies.get("zurli")===undefined &&(
+              <Link className="btn btn-outline-light" to={"/register"}>
+                Register
+              </Link>)}
         </div>
       </nav>
     </div>
