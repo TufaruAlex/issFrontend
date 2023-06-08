@@ -14,10 +14,11 @@ export default function CancelAccount() {
     const {destinationId} = useParams()
     const paperStyle = {padding: '50px 20px', width: 600, margin: '20px auto'}
 
+
     const logout = (e) => {
         e.preventDefault()
-        fetch("http://localhost:8080/api/auth/deleteUser/"+String(localStorage.getItem("id")), {
-            method: "DELETE",
+        fetch("http://localhost:8080/api/auth/signout", {
+            method: "POST",
             headers: {"Content-Type": "application/json"},
             credentials: "include",
             mode: "cors"
@@ -27,6 +28,14 @@ export default function CancelAccount() {
         localStorage.setItem("role",null);
         localStorage.setItem("id",null);
         window.location.reload(false);
+    }
+    const deleteAcc = (e) => {
+        e.preventDefault()
+        fetch("http://localhost:8080/api/auth/deleteUser/"+String(localStorage.getItem("id")), {
+            method: "POST"
+        })
+            .then((response) => console.log(response.json())).then(()=>{
+        logout(e)});
     }
 
     const goBack=()=>{
@@ -49,7 +58,7 @@ export default function CancelAccount() {
                     <Button variant="contained" color="secondary" onClick={goBack}>
                         Go back
                     </Button>
-                    <Button variant="contained" color="secondary" onClick={logout}>
+                    <Button variant="contained" color="secondary" onClick={deleteAcc}>
                         Delete Account
                     </Button>
                 </Box>

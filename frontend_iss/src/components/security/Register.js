@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import MuiAlert from '@mui/material/Alert';
+import admin from "./Untitled.png"
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -81,7 +82,7 @@ export default function Register() {
         }}
 
     return (
-        <Container>
+        <Container >
             <Snackbar
                 open={open}
                 autoHideDuration={6000}
@@ -99,7 +100,7 @@ export default function Register() {
                     noValidate
                     autoComplete="off"
                 >
-                    <h2>Login</h2>
+                    <h2>Register</h2>
                     <TextField id="outlined-basic" label="Name" variant="outlined" required
                                value={name}
                                onChange={(e) => setName(e.target.value)}
@@ -114,7 +115,8 @@ export default function Register() {
                                onChange={(e) => setPassword(e.target.value)}
                     /><br/>
                     <FormControl>
-                        <FormLabel id="radioId">Admin?</FormLabel>
+                        <img src={admin}></img>
+                        <FormLabel id="radioId"></FormLabel>
                         <RadioGroup
                             aria-labelledby="radioId"
                             name="radiobuttongroup"
